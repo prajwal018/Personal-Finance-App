@@ -1,0 +1,33 @@
+# Bytecode files
+*.class
+
+# Log files
+*.log
+
+# Dependency directories
+/.m2/
+/.gradle/
+/target/
+/build/
+
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Java packaging files
+*.jar
+*.war
+*.ear
+
+
+# Maven
+.mvn/
+
+# Gradle
+.gradle/
+build/
+
+# Application-specific
+transactions.txt
+budgets.txt
