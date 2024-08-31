@@ -1,15 +1,15 @@
 package com.finance;
 
-import java.util.Scanner;
 import com.finance.model.Transaction;
 import com.finance.service.FinanceService;
-import com.finance.util.DataStorage;
+
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
+        FinanceService financeService = new FinanceService();
 
-        FinanceService financeService = new FinanceService(new DataStorage());
         try (Scanner sc = new Scanner(System.in)) {
             while (true) {
                 System.out.println("1. Add Transaction");
@@ -17,7 +17,8 @@ public class Main {
                 System.out.println("3. Set Budget");
                 System.out.println("4. View Budgets");
                 System.out.println("5. Check Budgets");
-                System.out.println("6. Exit");
+                System.out.println("6. Search Transaction");
+                System.out.println("7. Exit");
                 int choice = sc.nextInt();
                 sc.nextLine();
 
@@ -30,8 +31,10 @@ public class Main {
                         String category = sc.nextLine();
                         System.out.println("Enter description: ");
                         String description = sc.nextLine();
+                        System.out.println("Enter date: ");
+                        String date = sc.nextLine();
                         financeService
-                                .addTransaction(new Transaction(amount, category, description));
+                                .addTransaction(new Transaction(category, amount, description, date));
                         break;
                     case 2:
                         financeService.viewTransactions();
@@ -51,6 +54,11 @@ public class Main {
                         financeService.checkBudgets();
                         break;
                     case 6:
+                        System.out.println("Enter Search Query:");
+                        String query = sc.nextLine();
+                        financeService.searchTransaction(query);
+                        break;
+                    case 7:
                         return;
                     default:
                         System.out.println("Invalid Choice.");

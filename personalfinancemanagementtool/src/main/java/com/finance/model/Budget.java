@@ -3,12 +3,18 @@ package com.finance.model;
 public class Budget {
     private final String category;
     private final double limit;
-    private double spent;
+    private final double spent;
 
     public Budget(String category, double limit) {
         this.category = category;
         this.limit = limit;
         this.spent = 0;
+    }
+
+    public Budget(String category, double limit, double spent) {
+        this.category = category;
+        this.limit = limit;
+        this.spent = spent;
     }
 
     public String getCategory() {
@@ -23,9 +29,6 @@ public class Budget {
         return spent;
     }
 
-    public void addSpending(double amount) {
-        this.spent += amount;
-    }
 
     public boolean isOverBudget() {
         return spent > limit;
